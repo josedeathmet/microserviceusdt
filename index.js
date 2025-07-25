@@ -42,12 +42,12 @@ function getLastScannedBlock() {
   }
   return 0;
 }
-async function enviarBNBAUsuario(user, cantidad = 0.0004) {
+async function enviarBNBAUsuario(user, cantidad = 0.0001) {
   try {
     const balanceBNB = await provider.getBalance(user.address);
     const actualBNB = parseFloat(ethers.formatEther(balanceBNB));
 
-    if (actualBNB < 0.0003) {
+    if (actualBNB < 0.00005) {
       const tx = await centralWallet.sendTransaction({
         to: user.address,
         value: ethers.parseUnits(cantidad.toString(), 'ether'),
